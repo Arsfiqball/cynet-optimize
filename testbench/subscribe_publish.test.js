@@ -1,11 +1,13 @@
 const mqtt = require('mqtt')
+const fs = require('fs')
 
-const port = 1883
+const port = 8883
 const host = 'localhost'
-const protocol = 'mqtt'
+const protocol = 'mqtts'
+const ca = [fs.readFileSync('tls_ca_cert.pem')]
 
-const subscriber = mqtt.connect({ port, host, protocol, clientId: 'Subscriber_0' })
-const publisher = mqtt.connect({ port, host, protocol, clientId: 'Publisher_0' })
+const subscriber = mqtt.connect({ port, host, protocol, ca, clientId: 'Subscriber_0' })
+const publisher = mqtt.connect({ port, host, protocol, ca, clientId: 'Publisher_0' })
 
 subscriber.subscribe('messages')
 
@@ -36,21 +38,17 @@ publisher.on('connect', function () {
 
     // Disconnect publisher and then the subscriber
     Promise.all(promises).then(() => {
-      setTimeout(() => {
-        publisher.end(() => {
-          setTimeout(() => {
-            subscriber.end()
-          }, 500)
-        })
-      }, 500)
+      publisher.end(() => {
+        subscriber.end()
+      })
     })
   }, 500 * 20 + 25) // +25 to ensure last message is sent
 })
 
 subscriber.on('error', function (error) {
-  console.error(error)
+  console.error('subscriber', error)
 })
 
 publisher.on('error', function (error) {
-  console.error(error)
+  console.error('publisher', error)
 })

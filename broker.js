@@ -1,15 +1,21 @@
 const cluster = require('cluster')
+const fs = require('fs')
 const aedes = require('aedes')
-const net = require('net')
+const tls = require('tls')
 const aedesPersistenceMongoDB = require('aedes-persistence-mongodb')
 const mqemitterMongoDB = require('mqemitter-mongodb')
 const logging = require('aedes-logging')
 
-const PORT = 1883
+const PORT = 8883
 const HOST = 'localhost'
 const MONGO_URL = 'mongodb://127.0.0.1/cynet-optimize-test'
-const USE_LOGGING = false
+const USE_LOGGING = true
 const LOG_MESSAGE = false
+
+const serverOptions = {
+  key: fs.readFileSync('testbench/tls_localhost_key.pem'),
+  cert: fs.readFileSync('testbench/tls_localhost_cert.pem')
+}
 
 function createBroker () {
   const broker = aedes({
@@ -26,7 +32,7 @@ function createBroker () {
     })
   })
 
-  const server = net.createServer(broker.handle)
+  const server = tls.createServer(serverOptions, broker.handle)
   server.listen(PORT, HOST)
 
   if (USE_LOGGING) {
