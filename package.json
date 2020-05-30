@@ -1,0 +1,18 @@
+{
+  "name": "cynet-optimize",
+  "version": "0.0.1",
+  "description": "Secure messaging system for Cyberse",
+  "main": "index.js",
+  "author": "Iqbal Mohammad Abdul Ghoni <iqballmags@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "aedes": "^0.42.0",
+    "aedes-logging": "^2.0.1",
+    "aedes-persistence-mongodb": "^8.0.1",
+    "mqemitter-mongodb": "^7.0.2"
+  },
+  "devDependencies": {
+    "mqtt": "^4.1.0"
+  }
+}
