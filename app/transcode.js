@@ -13,8 +13,8 @@ const USE_LOGGING = true
 const LOG_MESSAGE = false
 
 const serverOptions = {
-  key: fs.readFileSync('testbench/tls_localhost_key.pem'),
-  cert: fs.readFileSync('testbench/tls_localhost_cert.pem')
+  key: fs.readFileSync('../testbench/tls_localhost_key.pem'),
+  cert: fs.readFileSync('../testbench/tls_localhost_cert.pem')
 }
 
 function createBroker () {

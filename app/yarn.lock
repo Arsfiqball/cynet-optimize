@@ -58,9 +58,9 @@ aedes-protocol-decoder@^1.0.0:
     proxy-protocol-js "^4.0.3"
 
 aedes@^0.42.0:
-  version "0.42.0"
-  resolved "https://registry.yarnpkg.com/aedes/-/aedes-0.42.0.tgz#05a5b686882055fcc44b798c33770331440929b7"
-  integrity sha512-ZgEgR7d2YkagBKQ4G1KwzkzxRud67Y5zoC3Q411qh8OMklVCjkOT7i/mC9PRrE7V610+rrngMv/rjAg1boxfsw==
+  version "0.42.1"
+  resolved "https://registry.yarnpkg.com/aedes/-/aedes-0.42.1.tgz#3718689b7eab50113bd468fee45fd5e991c653ff"
+  integrity sha512-YlmgzE691UsTAugQ8SJVVpjv+Qc9m+TQJDvXCQ/bU3xnUohuGdaNWWt1u9KNLSbJhr+NDQPp10nuvq7UCTF7zQ==
   dependencies:
     aedes-packet "^2.3.1"
     aedes-persistence "^8.1.1"
