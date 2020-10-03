@@ -27,7 +27,7 @@ function createBroker () {
       url: MONGO_URL,
       ttl: {
         packets: 300,
-        subscriptions: 300,
+        subscriptions: 300
       }
     })
   })
